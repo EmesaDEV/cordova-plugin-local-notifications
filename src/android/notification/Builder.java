@@ -144,7 +144,8 @@ public final class Builder {
                 .setLights(options.getLedColor(), options.getLedOn(), options.getLedOff());
 
         if (sound != Uri.EMPTY && !isUpdate()) {
-            builder.setSound(sound);
+            // builder.setSound(sound); No longer use this, it fails when app is in the background, so just play the sound now.
+            android.media.RingtoneManager.getRingtone(context, sound).play();
         }
 
         if (options.isWithProgressBar()) {

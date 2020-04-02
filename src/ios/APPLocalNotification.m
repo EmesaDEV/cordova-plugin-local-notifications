@@ -485,8 +485,10 @@ UNNotificationPresentationOptions const OptionAlert = UNNotificationPresentation
               willPresentNotification:notification
                 withCompletionHandler:handler];
 
-    if ([toast.trigger isKindOfClass:UNPushNotificationTrigger.class])
+    if ([toast.trigger isKindOfClass:UNPushNotificationTrigger.class]) {
+        handler(UNNotificationPresentationOptionNone);
         return;
+    }
 
     APPNotificationOptions* options = toast.options;
 
